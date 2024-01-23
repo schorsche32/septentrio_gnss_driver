@@ -55,6 +55,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
    "msg/MeasEpoch.msg"
    "msg/MeasEpochChannelType1.msg"
    "msg/MeasEpochChannelType2.msg"
+   "msg/MeasExtra.msg"
+   "msg/MeasExtraChannelSub.msg"
    "msg/PVTCartesian.msg"
    "msg/PVTGeodetic.msg"
    "msg/PosCovCartesian.msg"

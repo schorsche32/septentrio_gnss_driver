@@ -111,6 +111,7 @@ enum SbfId
     ATT_COV_EULER = 5939,
     CHANNEL_STATUS = 4013,
     MEAS_EPOCH = 4027,
+    MEAS_EXTRA = 4000,
     DOP = 4001,
     VEL_COV_CARTESIAN = 5907,
     VEL_COV_GEODETIC = 5908,
@@ -261,6 +262,11 @@ namespace io {
          * need to be stored
          */
         MeasEpochMsg last_measepoch_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        MeasExtraMsg last_measextra_;
 
         /**
          * @brief Since GPSFix needs DOP, incoming DOP blocks need to be stored

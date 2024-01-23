@@ -233,6 +233,8 @@ struct Settings
     bool publish_gpgsv;
     //! Whether or not to publish the MeasEpoch message
     bool publish_measepoch;
+    //! Whether or not to publish the MeasExtra message
+    bool publish_measextra;
     //! Whether or not to publish the RFStatus and AIMPlusStatus message and
     //! diagnostics
     bool publish_aimplusstatus;

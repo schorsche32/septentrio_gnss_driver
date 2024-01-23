@@ -94,6 +94,7 @@ publish:
   gprmc: true
   gpst: true
   measepoch: true
+  measextra: true
   pvtcartesian: true
   pvtgeodetic: true
   basevectorcart: false

@@ -862,6 +862,10 @@ namespace io {
             {
                 blocks << " +MeasEpoch";
             }
+            if (settings_->publish_measextra)
+            {
+                blocks << " +MeasExtra";
+            }
             if (settings_->publish_gpsfix)
             {
                 blocks << " +ChannelStatus +DOP";

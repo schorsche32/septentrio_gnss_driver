@@ -55,6 +55,8 @@ static const uint8_t MAXSB_MEASEPOCH_T1 =
 static const uint16_t MAXSB_MEASEPOCH_T2 =
     ((MAXSB_MEASEPOCH_T1) *
      (((MAX_NR_OF_SIGNALS_PER_SATELLITE) * (NR_OF_ANTENNAS)) - 1));
+//! Max number of MeasExtraChannelSub sub-blocks MeasExtra can consist of
+static const uint8_t MAXSB_MEASEXTRA = MAXSB_MEASEPOCH_T1;
 //! Max number of vector info sub-blocks
 static const uint8_t MAXSB_NBVECTORINFO = 30;
 
@@ -620,6 +622,69 @@ template <typename It>
     {
         if (!MeasEpochChannelType1Parser(node, it, type1, msg.sb1_length,
                                          msg.sb2_length))
+            return false;
+    }
+    if (it > itEnd)
+    {
+        node->log(log_level::ERROR, "Parse error: iterator past end.");
+        return false;
+    }
+    return true;
+};
+
+/**
+ * MeasExtraChannelSubParser
+ * @brief Qi based parser for the SBF sub-block "MeasExtraChannelSub"
+ */
+template <typename It>
+[[nodiscard]] bool MeasExtraChannelSubParser(ROSaicNodeBase* node, It& it,
+                                             MeasExtraChannelSubMsg& msg,
+                                             uint8_t sb_length)
+{
+    qiLittleEndianParser(it, msg.rx_channel);
+    qiLittleEndianParser(it, msg.type);
+    qiLittleEndianParser(it, msg.mp_correction);
+    qiLittleEndianParser(it, msg.smoothing_correction);
+    qiLittleEndianParser(it, msg.code_var);
+    qiLittleEndianParser(it, msg.carrier_var);
+    qiLittleEndianParser(it, msg.lock_time);
+    qiLittleEndianParser(it, msg.cum_loss_cont);
+    qiLittleEndianParser(it, msg.car_mp_corr);
+    qiLittleEndianParser(it, msg.info);
+    qiLittleEndianParser(it, msg.misc);
+    std::advance(it, sb_length - 16); // skip padding
+    return true;
+};
+
+/**
+ * MeasExtraParser
+ * @brief Qi based parser for the SBF block "MeasExtra"
+ */
+template <typename It>
+[[nodiscard]] bool MeasExtraParser(ROSaicNodeBase* node, It it, It itEnd,
+                                   MeasExtraMsg& msg)
+{
+    if (!BlockHeaderParser(node, it, msg.block_header))
+        return false;
+    if (msg.block_header.id != 4000)
+    {
+        node->log(log_level::ERROR, "Parse error: Wrong header ID " +
+                                        std::to_string(msg.block_header.id));
+        return false;
+    }
+    qiLittleEndianParser(it, msg.n);
+    if (msg.n > MAXSB_MEASEXTRA)
+    {
+        node->log(log_level::ERROR, "Parse error: Too many MeasExtraChannelSub " +
+                                        std::to_string(msg.n));
+        return false;
+    }
+    qiLittleEndianParser(it, msg.sb_length);
+    qiLittleEndianParser(it, msg.doppler_var_factor);
+    msg.channel_sub.resize(msg.n);
+    for (auto& channel_sub : msg.channel_sub)
+    {
+        if (!MeasExtraChannelSubParser(node, it, channel_sub, msg.sb_length))
             return false;
     }
     if (it > itEnd)

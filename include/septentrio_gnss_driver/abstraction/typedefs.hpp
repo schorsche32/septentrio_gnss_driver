@@ -70,6 +70,8 @@
 #include <septentrio_gnss_driver/msg/meas_epoch.hpp>
 #include <septentrio_gnss_driver/msg/meas_epoch_channel_type1.hpp>
 #include <septentrio_gnss_driver/msg/meas_epoch_channel_type2.hpp>
+#include <septentrio_gnss_driver/msg/meas_extra.hpp>
+#include <septentrio_gnss_driver/msg/meas_extra_channel_sub.hpp>
 #include <septentrio_gnss_driver/msg/pos_cov_cartesian.hpp>
 #include <septentrio_gnss_driver/msg/pos_cov_geodetic.hpp>
 #include <septentrio_gnss_driver/msg/pvt_cartesian.hpp>
@@ -127,6 +129,8 @@ typedef septentrio_gnss_driver::msg::RFBand RfBandMsg;
 typedef septentrio_gnss_driver::msg::MeasEpoch MeasEpochMsg;
 typedef septentrio_gnss_driver::msg::MeasEpochChannelType1 MeasEpochChannelType1Msg;
 typedef septentrio_gnss_driver::msg::MeasEpochChannelType2 MeasEpochChannelType2Msg;
+typedef septentrio_gnss_driver::msg::MeasExtra MeasExtraMsg;
+typedef septentrio_gnss_driver::msg::MeasExtraChannelSub MeasExtraChannelSubMsg;
 typedef septentrio_gnss_driver::msg::AttCovEuler AttCovEulerMsg;
 typedef septentrio_gnss_driver::msg::AttEuler AttEulerMsg;
 typedef septentrio_gnss_driver::msg::PVTCartesian PVTCartesianMsg;

@@ -2573,6 +2573,19 @@ namespace io {
             assembleGpsFix();
             break;
         }
+        case MEAS_EXTRA:
+        {
+            if (!MeasExtraParser(node_, telegram->message.begin(),
+                                 telegram->message.end(), last_measextra_))
+            {
+                node_->log(log_level::ERROR, "parse error in MeasExtra");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_measextra_);
+            if (settings_->publish_measextra)
+                publish<MeasExtraMsg>("measextra", last_measextra_);
+            break;
+        }
         case DOP:
         {
             if (!DOPParser(node_, telegram->message.begin(), telegram->message.end(),

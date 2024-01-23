@@ -106,6 +106,7 @@ publish:
   gprmc: false
   gpst: false
   measepoch: false
+  measextra: false
   pvtcartesian: false
   pvtgeodetic: false
   basevectorcart: false

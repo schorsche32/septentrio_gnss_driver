@@ -170,6 +170,7 @@ rosaic_node::ROSaicNode::ROSaicNode(const rclcpp::NodeOptions& options) :
     param("publish.gpgsa", settings_.publish_gpgsa, false);
     param("publish.gpgsv", settings_.publish_gpgsv, false);
     param("publish.measepoch", settings_.publish_measepoch, false);
+    param("publish.measextra", settings_.publish_measextra, false);
     param("publish.pvtcartesian", settings_.publish_pvtcartesian, false);
     param("publish.pvtgeodetic", settings_.publish_pvtgeodetic, false);
     param("publish.basevectorcart", settings_.publish_basevectorcart, false);

@@ -115,6 +115,7 @@ publish:
   measepoch: false
   pvtcartesian: false
   pvtgeodetic: true
+  measextra: false
   basevectorcart: false
   basevectorgeod: false
   poscovcartesian: false
