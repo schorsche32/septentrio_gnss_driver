@@ -357,6 +357,8 @@ struct Settings
     bool ins_vsm_ros_variances_by_parameter = false;
     //! Variances of the 3D velocity (var_x, var_y, var_z)
     std::vector<double> ins_vsm_ros_variances = {-1.0, -1.0, -1.0};
+    //! Signals that should be tracked
+    std::vector<std::string> signals_to_track;
     //! VSM IP server id
     std::string ins_vsm_ip_server_id;
     //! VSM tcp port

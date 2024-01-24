@@ -393,6 +393,23 @@ namespace io {
             }
         }
 
+        //Set which signals are tracked
+        if (settings_->signals_to_track.size() > 0)
+        {
+            std::stringstream ss;
+            ss << "snt, ";
+            bool first = true;
+            for (auto signal : settings_->signals_to_track)
+            {
+                if (!first)
+                    ss << "+";
+                ss << signal;
+                first = false;
+            }
+            ss << "\x0D";
+            send(ss.str());
+        }
+
         // Configuring the corrections connection
         for (auto ntrip : settings_->rtk.ntrip)
         {
