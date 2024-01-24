@@ -138,6 +138,16 @@ rosaic_node::ROSaicNode::ROSaicNode(const rclcpp::NodeOptions& options) :
                 std::to_string(settings_.polling_period_pvt));
         return false;
     }
+    getUint32Param("polling_period.nav_page", settings_.polling_period_nav_page,
+                   static_cast<uint32_t>(1000));
+    if (!(validPeriod(settings_.polling_period_nav_page,
+                      settings_.septentrio_receiver_type == "ins")))
+    {
+        this->log(
+            log_level::FATAL,
+            "Please specify a valid polling period for Navigation-Page related SBF blocks.");
+        return false;
+    }
     getUint32Param("polling_period.rest", settings_.polling_period_rest,
                    static_cast<uint32_t>(1000));
     if (!(validPeriod(settings_.polling_period_rest,
@@ -194,6 +204,12 @@ rosaic_node::ROSaicNode::ROSaicNode(const rclcpp::NodeOptions& options) :
     param("publish.twist", settings_.publish_twist, false);
     param("publish.tf", settings_.publish_tf, false);
     param("publish.tf_ecef", settings_.publish_tf_ecef, false);
+    param("publish.gpsrawca", settings_.publish_gpsrawca, false);
+    param("publish.glorawca", settings_.publish_glorawca, false);
+    param("publish.galrawfnav", settings_.publish_galrawfnav, false);
+    param("publish.galrawinav", settings_.publish_galrawinav, false);
+    param("publish.galrawcnav", settings_.publish_galrawcnav, false);
+    param("publish.bdsraw", settings_.publish_bdsraw, false);
 
     if (settings_.publish_tf && settings_.publish_tf_ecef)
     {

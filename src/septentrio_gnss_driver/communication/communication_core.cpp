@@ -309,6 +309,9 @@ namespace io {
         std::string pvt_interval = parsing_utilities::convertUserPeriodToRxCommand(
             settings_->polling_period_pvt);
 
+        std::string nav_page_interval = parsing_utilities::convertUserPeriodToRxCommand(
+            settings_->polling_period_nav_page);
+
         std::string rest_interval = parsing_utilities::convertUserPeriodToRxCommand(
             settings_->polling_period_rest);
 
@@ -905,6 +908,39 @@ namespace io {
             std::stringstream ss;
             ss << "sso, Stream" << std::to_string(stream) << ", " << streamPort_
                << "," << blocks.str() << ", " << pvt_interval << "\x0D";
+            send(ss.str());
+            ++stream;
+        }
+        // Setting up SBF Output of the navigation pages
+        {
+            std::stringstream blocks;
+            if (settings_->publish_gpsrawca)
+            {
+                blocks << " +GPSRawCA";
+            }
+            if (settings_->publish_glorawca)
+            {
+                blocks << " +GLORawCA";
+            }
+            if (settings_->publish_galrawfnav)
+            {
+                blocks << " +GALRawFNAV";
+            }
+            if (settings_->publish_galrawinav)
+            {
+                blocks << " +GALRawINAV";
+            }
+            if (settings_->publish_bdsraw)
+            {
+                blocks << " +BDSRaw";
+            }
+            if (settings_->publish_galrawcnav)
+            {
+                blocks << " +GALRawCNAV";
+            }
+            std::stringstream ss;
+            ss << "sso, Stream" << std::to_string(stream) << ", " << streamPort_
+               << "," << blocks.str() << ", " << nav_page_interval << "\x0D";
             send(ss.str());
             ++stream;
         }

@@ -127,7 +127,13 @@ enum SbfId
     EXT_SENSOR_MEAS = 4050,
     RECEIVER_TIME = 5914,
     GAL_AUTH_STATUS = 4245,
-    RF_STATUS = 4092
+    RF_STATUS = 4092,
+    GPS_RAW_CA = 4017,
+    GLO_RAW_CA = 4026,
+    GAL_RAW_FNAV = 4022,
+    GAL_RAW_INAV = 4023,
+    BDS_RAW = 4047,
+    GAL_RAW_CNAV = 4024
 };
 
 namespace io {
@@ -267,6 +273,36 @@ namespace io {
          * @brief Seems to be common to all messages
          */
         MeasExtraMsg last_measextra_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        GPSRawCAMsg last_gpsrawca_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        GLORawCAMsg last_glorawca_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        GALRawFNAVMsg last_galrawfnav_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        GALRawINAVMsg last_galrawinav_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        GALRawCNAVMsg last_galrawcnav_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        BDSRawMsg last_bdsraw_;
 
         /**
          * @brief Since GPSFix needs DOP, incoming DOP blocks need to be stored

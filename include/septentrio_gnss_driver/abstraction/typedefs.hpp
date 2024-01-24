@@ -83,6 +83,12 @@
 #include <septentrio_gnss_driver/msg/vector_info_geod.hpp>
 #include <septentrio_gnss_driver/msg/vel_cov_cartesian.hpp>
 #include <septentrio_gnss_driver/msg/vel_cov_geodetic.hpp>
+#include <septentrio_gnss_driver/msg/gps_raw_ca.hpp>
+#include <septentrio_gnss_driver/msg/glo_raw_ca.hpp>
+#include <septentrio_gnss_driver/msg/gal_raw_fnav.hpp>
+#include <septentrio_gnss_driver/msg/gal_raw_inav.hpp>
+#include <septentrio_gnss_driver/msg/gal_raw_cnav.hpp>
+#include <septentrio_gnss_driver/msg/bds_raw.hpp>
 // NMEA msg includes
 #include <nmea_msgs/msg/gpgga.hpp>
 #include <nmea_msgs/msg/gpgsa.hpp>
@@ -142,6 +148,12 @@ typedef septentrio_gnss_driver::msg::VectorInfoCart VectorInfoCartMsg;
 typedef septentrio_gnss_driver::msg::VectorInfoGeod VectorInfoGeodMsg;
 typedef septentrio_gnss_driver::msg::VelCovCartesian VelCovCartesianMsg;
 typedef septentrio_gnss_driver::msg::VelCovGeodetic VelCovGeodeticMsg;
+typedef septentrio_gnss_driver::msg::GPSRawCA GPSRawCAMsg;
+typedef septentrio_gnss_driver::msg::GLORawCA GLORawCAMsg;
+typedef septentrio_gnss_driver::msg::GALRawFNAV GALRawFNAVMsg;
+typedef septentrio_gnss_driver::msg::GALRawINAV GALRawINAVMsg;
+typedef septentrio_gnss_driver::msg::GALRawCNAV GALRawCNAVMsg;
+typedef septentrio_gnss_driver::msg::BDSRaw BDSRawMsg;
 
 // NMEA message
 typedef nmea_msgs::msg::Gpgga GpggaMsg;

@@ -161,6 +161,8 @@ struct Settings
     std::string datum;
     //! Polling period for PVT-related SBF blocks
     uint32_t polling_period_pvt;
+    //! Polling period for Navigation Page SBF blocks
+    uint32_t polling_period_nav_page;
     //! Polling period for all other SBF blocks and NMEA messages
     uint32_t polling_period_rest;
     //! Marker-to-ARP offset in the eastward direction
@@ -278,6 +280,18 @@ struct Settings
     bool publish_exteventinsnavgeod;
     //! Whether or not to publish the ExtEventINSNavCartMsg message
     bool publish_exteventinsnavcart;
+    //! Whether or not to publish the GPSRawCAMsg message
+    bool publish_gpsrawca;
+    //! Whether or not to publish the GLORawCA message
+    bool publish_glorawca;
+    //! Whether or not to publish the GALRawFNAVMsg message
+    bool publish_galrawfnav;
+    //! Whether or not to publish the GALRawINAVMsg message
+    bool publish_galrawinav;
+    //! Whether or not to publish the GALRawCNAVMsg message
+    bool publish_galrawcnav;
+    //! Whether or not to publish the BDSRawMsg message
+    bool publish_bdsraw;
     //! Whether or not to publish the ExtSensorMeasMsg message
     bool publish_extsensormeas;
     //! Whether or not to publish the TimeReferenceMsg message with GPST

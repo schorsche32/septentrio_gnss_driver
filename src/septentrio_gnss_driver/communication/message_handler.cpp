@@ -2586,6 +2586,84 @@ namespace io {
                 publish<MeasExtraMsg>("measextra", last_measextra_);
             break;
         }
+        case GPS_RAW_CA:
+        {
+            if (!GPSRawCAParser(node_, telegram->message.begin(),
+                                telegram->message.end(), last_gpsrawca_))
+            {
+                node_->log(log_level::ERROR, "parse error in GpsRawCa");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_gpsrawca_);
+            if (settings_->publish_gpsrawca)
+                publish<GPSRawCAMsg>("gpsrawca", last_gpsrawca_);
+            break;
+        }
+        case GLO_RAW_CA:
+        {
+            if (!GLORawCAParser(node_, telegram->message.begin(),
+                                telegram->message.end(), last_glorawca_))
+            {
+                node_->log(log_level::ERROR, "parse error in GloRawCa");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_glorawca_);
+            if (settings_->publish_glorawca)
+                publish<GLORawCAMsg>("glorawca", last_glorawca_);
+            break;
+        }
+        case GAL_RAW_FNAV:
+        {
+            if (!GALRawFNAVParser(node_, telegram->message.begin(),
+                                  telegram->message.end(), last_galrawfnav_))
+            {
+                node_->log(log_level::ERROR, "parse error in GalRawFnav");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_galrawfnav_);
+            if (settings_->publish_galrawfnav)
+                publish<GALRawFNAVMsg>("galrawfnav", last_galrawfnav_);
+            break;
+        }
+        case GAL_RAW_INAV:
+        {
+            if (!GALRawINAVParser(node_, telegram->message.begin(),
+                                  telegram->message.end(), last_galrawinav_))
+            {
+                node_->log(log_level::ERROR, "parse error in GalRawInav");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_galrawinav_);
+            if (settings_->publish_galrawinav)
+                publish<GALRawINAVMsg>("galrawinav", last_galrawinav_);
+            break;
+        }
+        case GAL_RAW_CNAV:
+        {
+            if (!GALRawCNAVParser(node_, telegram->message.begin(),
+                                  telegram->message.end(), last_galrawcnav_))
+            {
+                node_->log(log_level::ERROR, "parse error in GalRawCnav");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_galrawcnav_);
+            if (settings_->publish_galrawcnav)
+                publish<GALRawCNAVMsg>("galrawcnav", last_galrawcnav_);
+            break;
+        }
+        case BDS_RAW:
+        {
+            if (!BDSRawParser(node_, telegram->message.begin(),
+                              telegram->message.end(), last_bdsraw_))
+            {
+                node_->log(log_level::ERROR, "parse error in BdsRaw");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_bdsraw_);
+            if (settings_->publish_bdsraw)
+                publish<BDSRawMsg>("bdsraw", last_bdsraw_);
+            break;
+        }
         case DOP:
         {
             if (!DOPParser(node_, telegram->message.begin(), telegram->message.end(),

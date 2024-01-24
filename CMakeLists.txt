@@ -73,6 +73,12 @@ rosidl_generate_interfaces(${PROJECT_NAME}
    "msg/VectorInfoGeod.msg"
    "msg/VelSensorSetup.msg"
    "msg/ExtSensorMeas.msg"
+   "msg/GPSRawCA.msg"
+   "msg/GLORawCA.msg"
+   "msg/GALRawFNAV.msg"
+   "msg/GALRawINAV.msg"
+   "msg/BDSRaw.msg"
+   "msg/GALRawCNAV.msg"
    DEPENDENCIES std_msgs
 )
 
