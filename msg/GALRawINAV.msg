@@ -11,4 +11,4 @@ uint8 viterbi_cnt # not applicable
 uint8 source # src of data, Bits 0-4: Signal type, Bits 5-7: Reserved
 uint8 freq_nr # not applicable
 uint8 rx_channel # not applicable
-uint8[8] nav_bits
+uint32[8] nav_bits
