@@ -28,6 +28,7 @@
 //
 // ****************************************************************************
 
+#define BOOST_BIND_GLOBAL_PLACEHOLDERS
 #include <septentrio_gnss_driver/node/rosaic_node.hpp>
 
 /**
