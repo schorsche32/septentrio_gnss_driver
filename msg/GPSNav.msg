@@ -18,7 +18,7 @@ uint8        iode_3 # Issue of data, ephemeris (8 bits from subframe 3)
 uint8        fit_interval_flag # Curve Fit Interval, (1 bit from subframe 2, word 10)
 uint8        reserved1 # Reserved
 float32      t_gd # Group delay [s]
-float32      t_oc # clock data reference time [s]
+uint32       t_oc # clock data reference time [s]
 float32      a_f2 # SV clock aging [s/s^2]
 float32      a_f1 # SV clock drift [s/s]
 float32      a_f0 # SV clock bias [s]
