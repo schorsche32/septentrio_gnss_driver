@@ -89,6 +89,9 @@
 #include <septentrio_gnss_driver/msg/gal_raw_inav.hpp>
 #include <septentrio_gnss_driver/msg/gal_raw_cnav.hpp>
 #include <septentrio_gnss_driver/msg/bds_raw.hpp>
+// NAV msg includes
+#include <septentrio_gnss_driver/msg/gal_nav.hpp>
+#include <septentrio_gnss_driver/msg/gps_nav.hpp>
 // NMEA msg includes
 #include <nmea_msgs/msg/gpgga.hpp>
 #include <nmea_msgs/msg/gpgsa.hpp>
@@ -155,12 +158,15 @@ typedef septentrio_gnss_driver::msg::GALRawINAV GALRawINAVMsg;
 typedef septentrio_gnss_driver::msg::GALRawCNAV GALRawCNAVMsg;
 typedef septentrio_gnss_driver::msg::BDSRaw BDSRawMsg;
 
+// NAV messages
+typedef septentrio_gnss_driver::msg::GPSNav GPSNavMsg;
+typedef septentrio_gnss_driver::msg::GALNav GALNavMsg;
+
 // NMEA message
 typedef nmea_msgs::msg::Gpgga GpggaMsg;
 typedef nmea_msgs::msg::Gpgsa GpgsaMsg;
 typedef nmea_msgs::msg::Gpgsv GpgsvMsg;
 typedef nmea_msgs::msg::Gprmc GprmcMsg;
-;
 
 // Septentrio INS+GNSS SBF messages
 typedef septentrio_gnss_driver::msg::INSNavCart INSNavCartMsg;

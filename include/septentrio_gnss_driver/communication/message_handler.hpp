@@ -133,7 +133,9 @@ enum SbfId
     GAL_RAW_FNAV = 4022,
     GAL_RAW_INAV = 4023,
     BDS_RAW = 4047,
-    GAL_RAW_CNAV = 4024
+    GAL_RAW_CNAV = 4024,
+    GPS_NAV = 5891,
+    GAL_NAV = 4002
 };
 
 namespace io {
@@ -303,6 +305,16 @@ namespace io {
          * @brief Seems to be common to all messages
          */
         BDSRawMsg last_bdsraw_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        GPSNavMsg last_gpsnav_;
+
+        /**
+         * @brief Seems to be common to all messages
+         */
+        GALNavMsg last_galnav_;
 
         /**
          * @brief Since GPSFix needs DOP, incoming DOP blocks need to be stored

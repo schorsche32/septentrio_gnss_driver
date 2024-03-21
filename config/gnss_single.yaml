@@ -56,7 +56,7 @@ polling_period:
   nav_page: 0
   rest: 500
 
-use_gnss_time: false
+use_gnss_time: true
 
 latency_compensation: false
 
@@ -95,6 +95,8 @@ publish:
   gprmc: true
   gpst: true
   measepoch: true
+  gpsnav: true
+  galnav: true
   measextra: true
   pvtcartesian: true
   pvtgeodetic: true

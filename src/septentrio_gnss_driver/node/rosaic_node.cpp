@@ -210,7 +210,10 @@ rosaic_node::ROSaicNode::ROSaicNode(const rclcpp::NodeOptions& options) :
     param("publish.galrawinav", settings_.publish_galrawinav, false);
     param("publish.galrawcnav", settings_.publish_galrawcnav, false);
     param("publish.bdsraw", settings_.publish_bdsraw, false);
-    param("signals_to_track", settings_.signals_to_track, std::vector<std::string>{});
+    param("publish.gpsnav", settings_.publish_gpsnav, false);
+    param("publish.galnav", settings_.publish_galnav, false);
+    param("signals_to_track", settings_.signals_to_track,
+          std::vector<std::string>{});
 
     if (settings_.publish_tf && settings_.publish_tf_ecef)
     {

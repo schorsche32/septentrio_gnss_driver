@@ -1382,6 +1382,117 @@ template <typename It>
 };
 
 /**
+ * GPSNavParser
+ * @brief Qi based parser for the SBF block "GPSNav"
+ */
+template <typename It>
+[[nodiscard]] bool GPSNavParser(ROSaicNodeBase* node, It it, It itEnd,
+                                GPSNavMsg& msg)
+{
+    if (!BlockHeaderParser(node, it, msg.block_header))
+        return false;
+    if (msg.block_header.id != 5891)
+    {
+        node->log(log_level::ERROR, "Parse error: Wrong header ID " +
+                                        std::to_string(msg.block_header.id));
+        return false; // Ensure to return false after logging the error
+    }
+
+    // Parse each field in the order they appear in the GPSNavMsg structure
+    qiLittleEndianParser(it, msg.prn);
+    qiLittleEndianParser(it, msg.reserved0);
+    qiLittleEndianParser(it, msg.week);
+    qiLittleEndianParser(it, msg.ca_or_pon_l2);
+    qiLittleEndianParser(it, msg.ura);
+    qiLittleEndianParser(it, msg.health);
+    qiLittleEndianParser(it, msg.l2_p_data_flag);
+    qiLittleEndianParser(it, msg.iodc);
+    qiLittleEndianParser(it, msg.iode_2);
+    qiLittleEndianParser(it, msg.iode_3);
+    qiLittleEndianParser(it, msg.fit_interval_flag);
+    qiLittleEndianParser(it, msg.reserved1);
+    qiLittleEndianParser(it, msg.t_gd);
+    qiLittleEndianParser(it, msg.t_oc);
+    qiLittleEndianParser(it, msg.a_f2);
+    qiLittleEndianParser(it, msg.a_f1);
+    qiLittleEndianParser(it, msg.a_f0);
+    qiLittleEndianParser(it, msg.correction_r_sine);
+    qiLittleEndianParser(it, msg.delta_n);
+    qiLittleEndianParser(it, msg.mean_anomaly);
+    qiLittleEndianParser(it, msg.correction_u_cosine);
+    qiLittleEndianParser(it, msg.eccentricity);
+    qiLittleEndianParser(it, msg.correction_u_sine);
+    qiLittleEndianParser(it, msg.sqrt_a);
+    qiLittleEndianParser(it, msg.t_oe);
+    qiLittleEndianParser(it, msg.correction_i_cosine);
+    qiLittleEndianParser(it, msg.omega0);
+    qiLittleEndianParser(it, msg.correction_i_sine);
+    qiLittleEndianParser(it, msg.inclination);
+    qiLittleEndianParser(it, msg.correction_r_cosine);
+    qiLittleEndianParser(it, msg.omega);
+    qiLittleEndianParser(it, msg.omega_dot);
+    qiLittleEndianParser(it, msg.i_dot);
+    qiLittleEndianParser(it, msg.wnt_oc);
+    qiLittleEndianParser(it, msg.wnt_oe);
+
+    return true; // Return true to indicate successful parsing
+}
+
+/**
+ * GALNavParser
+ * @brief Qi based parser for the SBF block "GALNav"
+ */
+template <typename It>
+[[nodiscard]] bool GALNavParser(ROSaicNodeBase* node, It it, It itEnd,
+                                GALNavMsg& msg)
+{
+    if (!BlockHeaderParser(node, it, msg.block_header))
+        return false;
+    if (msg.block_header.id != 4002)
+    {
+        node->log(log_level::ERROR, "Parse error: Wrong header ID " +
+                                        std::to_string(msg.block_header.id));
+        return false;
+    }
+    qiLittleEndianParser(it, msg.sv_id);
+    qiLittleEndianParser(it, msg.source);
+    qiLittleEndianParser(it, msg.sqrt_a);
+    qiLittleEndianParser(it, msg.mean_anomaly);
+    qiLittleEndianParser(it, msg.eccentricity);
+    qiLittleEndianParser(it, msg.inclination);
+    qiLittleEndianParser(it, msg.omega);
+    qiLittleEndianParser(it, msg.omega0);
+    qiLittleEndianParser(it, msg.omega_dot);
+    qiLittleEndianParser(it, msg.i_dot);
+    qiLittleEndianParser(it, msg.delta_n);
+    qiLittleEndianParser(it, msg.correction_u_cosine);
+    qiLittleEndianParser(it, msg.correction_u_sine);
+    qiLittleEndianParser(it, msg.correction_r_cosine);
+    qiLittleEndianParser(it, msg.correction_r_sine);
+    qiLittleEndianParser(it, msg.correction_i_cosine);
+    qiLittleEndianParser(it, msg.correction_i_sine);
+    qiLittleEndianParser(it, msg.t_oe);
+    qiLittleEndianParser(it, msg.t_oc);
+    qiLittleEndianParser(it, msg.a_f2);
+    qiLittleEndianParser(it, msg.a_f1);
+    qiLittleEndianParser(it, msg.a_f0);
+    qiLittleEndianParser(it, msg.wnt_oe);
+    qiLittleEndianParser(it, msg.wnt_oc);
+    qiLittleEndianParser(it, msg.iod_nav);
+    qiLittleEndianParser(it, msg.health_ossol);
+    qiLittleEndianParser(it, msg.health_prs);
+    qiLittleEndianParser(it, msg.sisa_l1e5a);
+    qiLittleEndianParser(it, msg.sisa_l1e5b);
+    qiLittleEndianParser(it, msg.sisa_l1ae6a);
+    qiLittleEndianParser(it, msg.bdg_l1e5a);
+    qiLittleEndianParser(it, msg.bdg_l1e5b);
+    qiLittleEndianParser(it, msg.bdg_l1ae6a);
+    qiLittleEndianParser(it, msg.cnav_enc);
+
+    return true; // Return true to indicate successful parsing
+}
+
+/**
  * INSNavCartParser
  * @brief Qi based parser for the SBF block "INSNavCart"
  */

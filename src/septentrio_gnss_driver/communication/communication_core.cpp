@@ -309,8 +309,9 @@ namespace io {
         std::string pvt_interval = parsing_utilities::convertUserPeriodToRxCommand(
             settings_->polling_period_pvt);
 
-        std::string nav_page_interval = parsing_utilities::convertUserPeriodToRxCommand(
-            settings_->polling_period_nav_page);
+        std::string nav_page_interval =
+            parsing_utilities::convertUserPeriodToRxCommand(
+                settings_->polling_period_nav_page);
 
         std::string rest_interval = parsing_utilities::convertUserPeriodToRxCommand(
             settings_->polling_period_rest);
@@ -954,6 +955,14 @@ namespace io {
             if (settings_->publish_galrawcnav)
             {
                 blocks << " +GALRawCNAV";
+            }
+            if (settings_->publish_galnav)
+            {
+                blocks << " +GALNav";
+            }
+            if (settings_->publish_gpsnav)
+            {
+                blocks << " +GPSNav";
             }
             std::stringstream ss;
             ss << "sso, Stream" << std::to_string(stream) << ", " << streamPort_

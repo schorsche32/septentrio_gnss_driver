@@ -292,6 +292,10 @@ struct Settings
     bool publish_galrawcnav;
     //! Whether or not to publish the BDSRawMsg message
     bool publish_bdsraw;
+    //! Whether or not to publish the GPSNavMsg message
+    bool publish_gpsnav;
+    //! Whether or not to publish the GALNavMsg message
+    bool publish_galnav;
     //! Whether or not to publish the ExtSensorMeasMsg message
     bool publish_extsensormeas;
     //! Whether or not to publish the TimeReferenceMsg message with GPST

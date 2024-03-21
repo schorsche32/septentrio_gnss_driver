@@ -2664,6 +2664,32 @@ namespace io {
                 publish<BDSRawMsg>("bdsraw", last_bdsraw_);
             break;
         }
+        case GPS_NAV:
+        {
+            if (!GPSNavParser(node_, telegram->message.begin(),
+                              telegram->message.end(), last_gpsnav_))
+            {
+                node_->log(log_level::ERROR, "parse error in GpsNav");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_gpsnav_);
+            if (settings_->publish_gpsnav)
+                publish<GPSNavMsg>("gpsnav", last_gpsnav_);
+            break;
+        }
+        case GAL_NAV:
+        {
+            if (!GALNavParser(node_, telegram->message.begin(),
+                              telegram->message.end(), last_galnav_))
+            {
+                node_->log(log_level::ERROR, "parse error in GalNav");
+                break;
+            }
+            assembleHeader(settings_->frame_id, telegram, last_galnav_);
+            if (settings_->publish_galnav)
+                publish<GALNavMsg>("galnav", last_galnav_);
+            break;
+        }
         case DOP:
         {
             if (!DOPParser(node_, telegram->message.begin(), telegram->message.end(),

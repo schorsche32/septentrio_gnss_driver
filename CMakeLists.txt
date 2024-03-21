@@ -79,6 +79,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
    "msg/GALRawINAV.msg"
    "msg/BDSRaw.msg"
    "msg/GALRawCNAV.msg"
+   "msg/GALNav.msg"
+   "msg/GPSNav.msg"
    DEPENDENCIES std_msgs
 )
 
