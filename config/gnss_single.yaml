@@ -56,7 +56,7 @@ polling_period:
   nav_page: 0
   rest: 500
 
-use_gnss_time: true
+use_gnss_time: false
 
 latency_compensation: false
 
@@ -89,7 +89,7 @@ rtk_settings:
 
 publish:
   # For both GNSS and INS Rxs
-  navsatfix: true
+  navsatfix: false
   gpsfix: true
   gpgga: true
   gprmc: true
@@ -102,21 +102,21 @@ publish:
   pvtgeodetic: true
   basevectorcart: false
   basevectorgeod: false
-  poscovcartesian: true
-  poscovgeodetic: true
+  poscovcartesian: false
+  poscovgeodetic: false
   velcovcartesian: false
-  velcovgeodetic: true
-  pose: true
+  velcovgeodetic: false
+  pose: false
   twist: false
-  diagnostics: true
-  aimplusstatus: true
+  diagnostics: false
+  aimplusstatus: false
   galauthstatus: false
-  gpsrawca: true
-  glorawca: true
-  galrawfnav: true
-  galrawinav: true
-  galrawcnav: true
-  bdsraw: true
+  gpsrawca: false
+  glorawca: false
+  galrawfnav: false
+  galrawinav: false
+  galrawcnav: false
+  bdsraw: false
   # For GNSS Rx only
   gpgsa: false
   gpgsv: false
