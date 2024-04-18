@@ -958,10 +958,16 @@ namespace io {
             }
             if (settings_->publish_galnav)
             {
+                //flush exisitng gall ephemeris data on connection
+                std::stringstream cmd{"esoc,"+mainConnectionPort_+",GAL"+"\x0D"};
+                send(cmd.str());
                 blocks << " +GALNav";
             }
             if (settings_->publish_gpsnav)
             {
+                //flush exisitng gall ephemeris data on connection
+                std::stringstream cmd{"esoc,"+mainConnectionPort_+",GPS"+"\x0D"};
+                send(cmd.str());
                 blocks << " +GPSNav";
             }
             std::stringstream ss;
